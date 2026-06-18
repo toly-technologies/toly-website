@@ -3,488 +3,542 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Toly is an early-stage technology studio preparing careful digital tools, systems, and experiences.">
-  <meta name="theme-color" content="#f6f7f2">
+  <meta name="description" content="Toly is a technology studio building tools designed to last.">
+  <meta name="theme-color" content="#080c0b">
   <meta property="og:title" content="Toly">
-  <meta property="og:description" content="An early-stage technology studio building quietly and publishing carefully.">
+  <meta property="og:description" content="Building amazing tools.">
   <meta property="og:type" content="website">
-  <title>Toly - Careful Technology Studio</title>
+  <title>Toly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      color-scheme: light;
-      --paper: #f6f7f2;
-      --surface: #ffffff;
-      --ink: #18232f;
-      --muted: #5f6d7a;
-      --soft: #e4e7dc;
-      --line: #cdd4c4;
-      --green: #0f6b5b;
-      --green-strong: #0a433b;
-      --clay: #9a5b32;
-      --blue: #245b73;
-      --shadow: 0 24px 70px rgba(24, 35, 47, 0.10);
+      --bg:      #080c0b;
+      --bg1:     #0d1714;
+      --bg2:     #121f1b;
+      --accent:  #00c896;
+      --accent2: #007a5e;
+      --ink:     #ddeae6;
+      --muted:   #6b8a82;
+      --faint:   #1a2e29;
+      --line:    #1e3530;
+      --white:   #ffffff;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.55;
+      font-family: 'Barlow', sans-serif;
+      background: var(--bg);
       color: var(--ink);
-      background:
-        linear-gradient(90deg, rgba(205, 212, 196, 0.34) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(205, 212, 196, 0.28) 1px, transparent 1px),
-        var(--paper);
-      background-size: 64px 64px;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration-thickness: 0.08em;
-      text-underline-offset: 0.2em;
-    }
-
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid rgba(15, 107, 91, 0.35);
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
       outline-offset: 4px;
     }
 
+    .wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+
+    /* SKIP LINK */
     .skip-link {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      z-index: 10;
-      padding: 10px 14px;
-      color: var(--surface);
-      background: var(--green-strong);
-      transform: translateY(-160%);
-      transition: transform 180ms ease;
+      position: absolute; top: 12px; left: 12px; z-index: 100;
+      padding: 10px 16px; background: var(--accent); color: var(--bg);
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.85rem;
+      transform: translateY(-200%); transition: transform 180ms ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    /* ── ANNOUNCEMENT BAR ───────────────────────────────────── */
+    .announce-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 51;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; padding: 8px 20px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--bg); cursor: default;
+    }
+    .announce-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--bg); flex-shrink: 0; opacity: 0.6;
+      animation: pulse 2s ease-in-out infinite;
     }
 
-    .skip-link:focus {
-      transform: translateY(0);
-    }
-
-    .wrap {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
+    /* ── HEADER ─────────────────────────────────────────────── */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 5;
-      border-bottom: 1px solid rgba(205, 212, 196, 0.86);
-      background: rgba(246, 247, 242, 0.92);
-      backdrop-filter: blur(14px);
+      position: fixed; top: 34px; left: 0; right: 0; z-index: 50;
+      border-bottom: 1px solid rgba(30,53,48,0.6);
+      background: rgba(8,12,11,0.92);
+      backdrop-filter: blur(18px);
+      transition: background 0.3s;
     }
 
     nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      min-height: 76px;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+      min-height: 68px;
     }
 
     .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 1.15rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--white);
     }
-
     .mark {
-      display: grid;
-      width: 34px;
-      height: 34px;
-      place-items: center;
-      color: var(--surface);
-      background: var(--green-strong);
-      border-radius: 50%;
-      font-size: 0.95rem;
+      display: grid; place-items: center;
+      width: 34px; height: 34px;
+      background: var(--accent); color: var(--bg);
+      border-radius: 50%; font-size: 0.95rem; font-weight: 800;
+      flex-shrink: 0;
     }
 
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 10px 22px;
+    .nav-center {
+      display: flex; align-items: center; gap: 32px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.88rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--muted);
-      font-size: 0.95rem;
+    }
+    .nav-center a { transition: color 0.2s; }
+    .nav-center a:hover { color: var(--white); }
+
+    .nav-status {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.74rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); padding: 6px 14px;
+      border: 1px solid var(--line);
+    }
+    .nav-status-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
     }
 
-    .nav-links a {
-      text-decoration: none;
-    }
 
-    .nav-links a:hover {
-      color: var(--green-strong);
-    }
 
-    main {
-      padding: 72px 0 64px;
-    }
-
+    /* ── HERO ───────────────────────────────────────────────── */
     .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 140px 0 80px; overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        linear-gradient(180deg, transparent 55%, var(--bg) 100%),
+        radial-gradient(ellipse 80% 60% at 65% 40%, rgba(0,200,150,0.05) 0%, transparent 70%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(90deg, rgba(0,200,150,0.04) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(0,200,150,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .scan-line {
+      position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.45; z-index: 1;
+      animation: scan 7s ease-in-out infinite;
+    }
+    @keyframes scan {
+      0%   { top: 8%;  opacity: 0; }
+      10%  { opacity: 0.45; }
+      90%  { opacity: 0.45; }
+      100% { top: 92%; opacity: 0; }
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
       display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
-      gap: 64px;
-      align-items: center;
-      min-height: calc(100vh - 172px);
-      padding-bottom: 56px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 24px;
-      color: var(--green-strong);
-      font-size: 0.88rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 32px;
-      height: 2px;
-      background: var(--green);
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
+      grid-template-columns: minmax(0,1.1fr) minmax(300px,0.9fr);
+      gap: 80px; align-items: center;
     }
 
     h1 {
-      max-width: 780px;
-      margin-bottom: 28px;
-      font-size: clamp(3rem, 8vw, 6.8rem);
-      line-height: 0.95;
-      letter-spacing: 0;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(3.4rem, 8.5vw, 8rem);
+      font-weight: 800; line-height: 0.9;
+      letter-spacing: -0.01em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 32px;
     }
+    h1 em { color: var(--accent); font-style: normal; }
 
     .lead {
-      max-width: 690px;
-      margin-bottom: 36px;
-      color: var(--muted);
-      font-size: clamp(1.12rem, 2vw, 1.32rem);
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: var(--muted); max-width: 540px;
+      margin-bottom: 40px; line-height: 1.75;
     }
 
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-    }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      min-height: 46px;
-      padding: 0 18px;
-      border: 1px solid var(--green-strong);
-      color: var(--surface);
-      background: var(--green-strong);
-      font-weight: 700;
-      text-decoration: none;
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border: 1px solid transparent; transition: all 0.2s;
     }
+    .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+    .btn-primary:hover { background: #00dda8; border-color: #00dda8; }
+    .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-    .button.secondary {
-      color: var(--green-strong);
-      background: transparent;
-    }
-
-    .signal {
+    /* ── PIPELINE CARD (was Signal) ─────────────────────────── */
+    .pipeline-card {
       position: relative;
-      min-height: 450px;
-      padding: 26px;
+      background: var(--bg1);
+      border: 1px solid var(--line);
+      padding: 36px;
       overflow: hidden;
-      color: var(--surface);
-      background:
-        linear-gradient(135deg, rgba(10, 67, 59, 0.98), rgba(36, 91, 115, 0.95)),
-        var(--green-strong);
-      box-shadow: var(--shadow);
+    }
+    .pipeline-card::before {
+      content: ""; position: absolute; inset: 14px;
+      border: 1px solid rgba(0,200,150,0.12); pointer-events: none;
+    }
+    .pipeline-inner-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(90deg, rgba(0,200,150,0.05) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(0,200,150,0.05) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(180deg, black 0%, transparent 100%);
+    }
+    .pipeline-content { position: relative; z-index: 1; }
+
+    .pipeline-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 32px;
+    }
+    .pipeline-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    .pipeline-count {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted);
     }
 
-    .signal::before {
-      content: "";
-      position: absolute;
-      inset: 26px;
-      border: 1px solid rgba(255, 255, 255, 0.22);
+    .pipeline-heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      font-weight: 800; text-transform: uppercase;
+      line-height: 1; color: var(--white);
+      margin-bottom: 32px;
     }
 
-    .signal-grid {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.10) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.10) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: linear-gradient(180deg, #000, transparent 85%);
-    }
+    .pipeline-items { display: flex; flex-direction: column; gap: 0; }
 
-    .signal-content {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      min-height: 398px;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .signal-kicker {
-      color: rgba(255, 255, 255, 0.72);
-      font-size: 0.86rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .signal-title {
-      max-width: 350px;
-      margin: 0;
-      font-size: clamp(1.8rem, 4vw, 3.2rem);
-      line-height: 1.04;
-      letter-spacing: 0;
-    }
-
-    .signal-bottom {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .metric {
-      padding-top: 14px;
-      border-top: 1px solid rgba(255, 255, 255, 0.24);
-    }
-
-    .metric strong {
-      display: block;
-      font-size: 1.5rem;
-      line-height: 1;
-    }
-
-    .metric span {
-      display: block;
-      margin-top: 8px;
-      color: rgba(255, 255, 255, 0.72);
-      font-size: 0.84rem;
-    }
-
-    .band {
-      padding: 64px 0;
+    .pipeline-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0;
       border-top: 1px solid var(--line);
+      gap: 16px;
+    }
+    .pipeline-item:last-child { border-bottom: 1px solid var(--line); }
+
+    .pipeline-item-left {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .pipeline-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .pipeline-dot.active {
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .pipeline-dot.hold { background: var(--muted); }
+    .pipeline-dot.concept { background: var(--faint); border: 1px solid var(--muted); }
+
+    .pipeline-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--white);
+    }
+    .pipeline-sub {
+      font-size: 0.8rem; color: var(--muted);
+      font-family: 'Barlow', sans-serif; font-weight: 400;
+    }
+
+    .pipeline-status {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .pipeline-status.active { color: var(--accent); }
+    .pipeline-status.hold   { color: var(--muted); }
+    .pipeline-status.next   { color: rgba(0,200,150,0.45); }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    /* ── SECTIONS ───────────────────────────────────────────── */
+    .band { padding: 100px 0; border-top: 1px solid var(--line); }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
+
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      font-weight: 800; line-height: 1.0;
+      letter-spacing: -0.01em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 20px;
     }
 
     .section-head {
-      display: grid;
-      grid-template-columns: minmax(220px, 0.45fr) minmax(0, 0.55fr);
-      gap: 40px;
-      align-items: start;
-      margin-bottom: 38px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: end; margin-bottom: 56px;
     }
+    .section-sub { font-size: 1.05rem; color: var(--muted); line-height: 1.75; }
 
-    h2 {
-      margin-bottom: 0;
-      font-size: clamp(1.8rem, 3.5vw, 3.2rem);
-      line-height: 1.06;
-      letter-spacing: 0;
+    /* ── COUNTERS ───────────────────────────────────────────── */
+    .counters {
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 1px; background: var(--line); margin-top: 72px;
     }
-
-    .section-head p,
-    .wide-copy {
-      color: var(--muted);
-      font-size: 1.06rem;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      min-height: 210px;
-      padding: 24px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.78);
-    }
-
-    .card h3 {
-      margin-bottom: 12px;
-      font-size: 1.02rem;
-    }
-
-    .card p {
-      margin-bottom: 0;
-      color: var(--muted);
-    }
-
-    .timeline {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .step {
-      padding: 24px;
-      border-left: 4px solid var(--green);
-      background: rgba(255, 255, 255, 0.72);
-    }
-
-    .step strong {
+    .counter-item { padding: 36px 28px; background: var(--bg); text-align: center; }
+    .counter-num {
       display: block;
-      margin-bottom: 8px;
-      color: var(--green-strong);
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 3rem; font-weight: 800;
+      color: var(--accent); line-height: 1; margin-bottom: 8px;
     }
-
-    .step p {
-      margin-bottom: 0;
+    .counter-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--muted);
     }
 
-    .notice {
-      display: grid;
-      grid-template-columns: minmax(220px, 0.38fr) minmax(0, 0.62fr);
-      gap: 36px;
-      padding: 34px;
-      color: var(--surface);
-      background: var(--ink);
+    /* ── PRINCIPLES CARDS ───────────────────────────────────── */
+    .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); }
+    .card { padding: 36px 32px; background: var(--bg); transition: background 0.25s; }
+    .card:hover { background: var(--bg1); }
+    .card-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.14em; color: var(--accent);
+      margin-bottom: 20px; opacity: 0.7;
+    }
+    .card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .card p { font-size: 0.97rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── PRODUCT SECTION (single card) ─────────────────────── */
+    .product-full {
+      border: 1px solid var(--line);
+      background: var(--bg1);
+      padding: 56px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .product-full:hover { border-color: rgba(0,200,150,0.3); }
+    .product-full::after {
+      content: "";
+      position: absolute; top: 0; right: 0;
+      width: 50%; height: 100%;
+      background: radial-gradient(ellipse 60% 60% at 80% 40%, rgba(0,200,150,0.04), transparent);
+    }
+    .product-full-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+    .product-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 5px 14px; border: 1px solid rgba(0,200,150,0.35);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 28px;
+    }
+    .product-tag::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); animation: pulse 2s ease-in-out infinite;
     }
 
-    .notice h2 {
-      font-size: clamp(1.6rem, 3vw, 2.5rem);
+    .product-full h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 800; text-transform: uppercase;
+      line-height: 0.95; color: var(--white); margin-bottom: 20px;
     }
 
-    .notice p {
-      margin-bottom: 0;
-      color: rgba(255, 255, 255, 0.78);
+    .product-desc { font-size: 1.02rem; color: var(--muted); line-height: 1.75; margin-bottom: 32px; }
+
+    .product-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+    .pill {
+      padding: 5px 14px; background: var(--faint);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.76rem; font-weight: 600;
+      letter-spacing: 0.06em; color: var(--muted); text-transform: uppercase;
     }
 
-    footer {
-      padding: 34px 0 46px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.94rem;
+    .progress-block { margin-top: 8px; }
+    .progress-label {
+      display: flex; justify-content: space-between;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.1em; color: var(--muted);
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .progress-bar { height: 2px; background: var(--line); position: relative; }
+    .progress-fill {
+      position: absolute; left: 0; top: 0; height: 100%;
+      background: var(--accent); width: 0;
+      transition: width 1.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .progress-fill.animated { width: var(--target-width); }
+
+    /* Spec list (right column) */
+    .spec-list { display: flex; flex-direction: column; gap: 0; padding-top: 8px; }
+    .spec-item {
+      display: flex; justify-content: space-between; align-items: start;
+      padding: 16px 0; border-bottom: 1px solid var(--line); gap: 24px;
+    }
+    .spec-item:first-child { border-top: 1px solid var(--line); }
+    .spec-key {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); flex-shrink: 0;
+    }
+    .spec-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--white); text-align: right;
     }
 
-    .footer-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 16px;
+    /* ── NOTICE ─────────────────────────────────────────────── */
+    .notice { border-top: 1px solid var(--line); padding: 90px 0; background: var(--bg1); }
+    .notice-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .notice h2 { font-size: clamp(2rem, 4vw, 3.6rem); margin-bottom: 0; }
+    .notice p { color: var(--muted); line-height: 1.75; margin-bottom: 28px; }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    footer { border-top: 1px solid var(--line); padding: 72px 0 40px; }
+    .footer-top {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 60px;
+    }
+    .footer-brand {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 1.1rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 18px;
+    }
+    .footer-tagline {
+      font-size: 0.93rem; color: var(--muted);
+      line-height: 1.75; max-width: 280px; margin-bottom: 28px;
+    }
+    .footer-live {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border: 1px solid var(--line);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+    }
+    .footer-live::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); animation: pulse 2s ease-in-out infinite;
+    }
+    .footer-col h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 12px; }
+    .footer-col a { font-size: 0.92rem; color: var(--muted); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-col .dim { color: var(--faint); pointer-events: none; }
+
+    .footer-bottom {
+      display: flex; flex-wrap: wrap;
+      justify-content: space-between; align-items: center; gap: 16px;
+      padding-top: 32px; border-top: 1px solid var(--line);
+      font-size: 0.86rem; color: var(--muted);
+    }
+    .footer-bottom a { color: var(--muted); transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--accent); }
+    .footer-lineage {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.76rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--faint);
     }
 
-    @media (max-width: 860px) {
-      header {
-        position: static;
-      }
-
-      nav,
-      .section-head,
-      .notice {
-        display: block;
-      }
-
-      .nav-links {
-        justify-content: flex-start;
-        margin-top: 14px;
-      }
-
-      main {
-        padding-top: 48px;
-      }
-
-      .hero {
-        display: block;
-        min-height: auto;
-      }
-
-      .signal {
-        min-height: 380px;
-        margin-top: 42px;
-      }
-
-      .signal-content {
-        min-height: 328px;
-      }
-
-      .cards,
-      .timeline {
-        grid-template-columns: 1fr;
-      }
-
-      .section-head p,
-      .notice p {
-        margin-top: 16px;
-      }
+    /* ── REVEAL ANIMATIONS ──────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
 
+    /* ── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner, .section-head, .notice-inner, .product-full-inner, .footer-top { grid-template-columns: 1fr; }
+      .pipeline-card { margin-top: 40px; }
+      .cards { grid-template-columns: 1fr; }
+      .counters { grid-template-columns: repeat(2,1fr); }
+      .product-full { padding: 36px 28px; }
+      .footer-top { gap: 32px; }
+      .nav-center { display: none; }
+    }
     @media (max-width: 560px) {
-      .wrap {
-        width: min(100% - 24px, 1120px);
-      }
-
-      nav {
-        min-height: 92px;
-      }
-
-      h1 {
-        font-size: clamp(2.5rem, 17vw, 4.6rem);
-      }
-
-      .actions {
-        align-items: stretch;
-        flex-direction: column;
-      }
-
-      .button {
-        justify-content: center;
-        width: 100%;
-      }
-
-      .signal,
-      .notice {
-        padding: 22px;
-      }
-
-      .signal::before {
-        inset: 18px;
-      }
-
-      .signal-bottom {
-        grid-template-columns: 1fr;
-      }
-
-      .band {
-        padding: 52px 0;
-      }
+      h1 { font-size: clamp(3rem, 16vw, 5rem); }
+      .band { padding: 72px 0; }
+      .counters { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <div class="announce-bar" role="status" aria-label="Studio update">
+    <span class="announce-dot" aria-hidden="true"></span>
+    MusicSimulator — Now in active development
+    <span class="announce-dot" aria-hidden="true"></span>
+  </div>
+
+  <!-- ── HEADER ──────────────────────────────────────────────── -->
   <header>
     <nav class="wrap" aria-label="Primary navigation">
       <a class="brand" href="#top" aria-label="Toly home">
@@ -492,113 +546,310 @@
         <span>Toly</span>
       </a>
 
-      <div class="nav-links" aria-label="Page sections">
-        <a href="#position">Position</a>
-        <a href="#principles">Principles</a>
-        <a href="#readiness">Readiness</a>
+      <div class="nav-center" aria-label="Page sections">
+        <a href="#mission">Mission</a>
+        <a href="#products">MusicSimulator</a>
+        <a href="#studio">Studio</a>
+      </div>
+
+      <div class="nav-status">
+        <span class="nav-status-dot" aria-hidden="true"></span>
+        Building
       </div>
     </nav>
   </header>
 
-  <main id="main" class="wrap">
+  <!-- ── HERO ────────────────────────────────────────────────── -->
+  <main id="main">
     <section id="top" class="hero" aria-labelledby="hero-title">
-      <div>
-        <p class="eyebrow">Early-stage technology studio</p>
-        <h1 id="hero-title">Toly is being built with patience.</h1>
-        <p class="lead">We are preparing practical digital tools, systems, and small experiences before asking for attention. There are no public products yet, and that is intentional: the work should be useful before it becomes loud.</p>
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="scan-line" aria-hidden="true"></div>
 
-        <div class="actions" aria-label="Primary actions">
-          <a class="button" href="#position">Read our position</a>
-          <a class="button secondary" href="#readiness">Current status</a>
+      <div class="wrap hero-inner">
+        <div>
+          <h1 id="hero-title" class="reveal">
+            Built with<br><em>patience.</em>
+          </h1>
+          <p class="lead reveal reveal-delay-1">
+            The loudest software rarely lasts. Toly exists to prove the opposite —
+            that restraint is a strategy, that depth outlasts hype, and that the right
+            moment to ship is when the work is genuinely ready. Not a day before.
+          </p>
+          <div class="actions reveal reveal-delay-2">
+            <a class="btn btn-primary" href="#products">See what we're building</a>
+            <a class="btn btn-ghost" href="#mission">Our mission</a>
+          </div>
+        </div>
+
+        <!-- Pipeline Card -->
+        <aside class="pipeline-card reveal reveal-delay-2" aria-label="Toly build pipeline">
+          <div class="pipeline-inner-grid" aria-hidden="true"></div>
+          <div class="pipeline-content">
+            <div class="pipeline-header">
+              <span class="pipeline-title">Build Pipeline</span>
+              <span class="pipeline-count">2 items tracked</span>
+            </div>
+
+            <p class="pipeline-heading">What is<br>in motion.</p>
+
+            <div class="pipeline-items" role="list">
+              <div class="pipeline-item" role="listitem">
+                <div class="pipeline-item-left">
+                  <span class="pipeline-dot active" aria-hidden="true"></span>
+                  <p class="pipeline-name">MusicSimulator</p>
+                </div>
+                <span class="pipeline-status active">Active Dev</span>
+              </div>
+
+              <div class="pipeline-item" role="listitem">
+                <div class="pipeline-item-left">
+                  <span class="pipeline-dot concept" aria-hidden="true"></span>
+                  <p class="pipeline-name">Project TBA</p>
+                </div>
+                <span class="pipeline-status next">Concept</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ── MISSION ──────────────────────────────────────────── -->
+    <section id="mission" class="band" aria-labelledby="mission-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="section-label">Mission</p>
+            <h2 id="mission-title">Software that<br>earns its place.</h2>
+          </div>
+          <p class="section-sub">
+            Most products are built for announcements. Toly builds for the long run —
+            systems that do exactly what they claim, documentation that respects the reader,
+            and releases that do not require a follow-up apology. The measure of good software
+            is whether people still trust it a year after it ships.
+          </p>
+        </div>
+
+        <div class="counters" aria-label="Studio metrics">
+          <div class="counter-item reveal">
+            <span class="counter-num">01</span>
+            <span class="counter-label">Product in active dev</span>
+          </div>
+          <div class="counter-item reveal reveal-delay-1">
+            <span class="counter-num">0</span>
+            <span class="counter-label">Public releases — yet</span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <aside class="signal" aria-label="Toly working posture">
-        <div class="signal-grid" aria-hidden="true"></div>
-        <div class="signal-content">
-          <p class="signal-kicker">Public signal</p>
-          <p class="signal-title">Calm progress, honest scope, durable releases.</p>
-          <div class="signal-bottom" aria-label="Company commitments">
-            <div class="metric">
-              <strong>01</strong>
-              <span>Prepare before launch</span>
+    <!-- ── STUDIO ───────────────────────────────────────────── -->
+    <section id="studio" class="band" aria-labelledby="studio-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="section-label">Studio</p>
+            <h2 id="studio-title">How we<br>operate.</h2>
+          </div>
+          <p class="section-sub">
+            Toly is small by design. No external funding, no artificial urgency, no
+            roadmaps built around investor cycles. The only obligation is to the work itself —
+            and to the people who will eventually use it.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <p class="card-num">01 / Utility</p>
+            <h3>Useful before impressive</h3>
+            <p>A product that solves one real problem well is worth more than a platform that solves ten problems poorly. We start with the smallest useful thing and build outward from there.</p>
+          </article>
+          <article class="card reveal reveal-delay-1">
+            <p class="card-num">02 / Honesty</p>
+            <h3>Accurate by default</h3>
+            <p>If something is unfinished, we say so. If a feature is missing, we say so. Public pages reflect the current reality of the work — not the ambition, not the pitch deck.</p>
+          </article>
+          <article class="card reveal reveal-delay-2">
+            <p class="card-num">03 / Durability</p>
+            <h3>Maintained, not abandoned</h3>
+            <p>Shipping is the beginning of the commitment, not the end of it. Every release that leaves this studio comes with the intent to support, update, and improve it responsibly.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRODUCTS ─────────────────────────────────────────── -->
+    <section id="products" class="band" aria-labelledby="products-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="section-label">Product in development</p>
+            <h2 id="products-title">One thing.<br>Done right.</h2>
+          </div>
+          <p class="section-sub">
+            MusicSimulator is the first Toly release — a mobile simulation game that treats the
+            music industry as a system worth understanding, not just a backdrop to look cool in.
+            No release date until it deserves one.
+          </p>
+        </div>
+
+        <div class="product-full reveal">
+          <div class="product-full-inner">
+            <div>
+              <p class="product-tag">In development</p>
+              <h3>Music<br>Simulator</h3>
+              <p class="product-desc">
+                A deep music career simulation for mobile. Every decision has a consequence.
+                Every deal has fine print. The industry does not care how talented you are —
+                it cares how you play the game. MusicSimulator is that game, built without
+                shortcuts or microtransactions designed to replace actual progress.
+              </p>
+              <div class="product-pills">
+                <span class="pill">Godot 4</span>
+                <span class="pill">Mobile</span>
+                <span class="pill">Simulation</span>
+                <span class="pill">Text-Driven</span>
+                <span class="pill">Axerith Studios</span>
+              </div>
+              <div class="progress-block">
+                <div class="progress-label">
+                  <span>Development progress</span>
+                  <span>65%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="--target-width: 65%;"></div>
+                </div>
+              </div>
             </div>
-            <div class="metric">
-              <strong>02</strong>
-              <span>Publish with care</span>
-            </div>
-            <div class="metric">
-              <strong>03</strong>
-              <span>Support what ships</span>
+
+            <div class="spec-list" aria-label="MusicSimulator specifications">
+              <div class="spec-item">
+                <span class="spec-key">Platform</span>
+                <span class="spec-val">Mobile — iOS &amp; Android</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-key">Engine</span>
+                <span class="spec-val">Godot 4</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-key">Studio</span>
+                <span class="spec-val">Axerith Studios</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-key">Revenue model</span>
+                <span class="spec-val">Free + One-time unlock</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-key">Pay-to-skip</span>
+                <span class="spec-val">None. Ever.</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-key">Public release</span>
+                <span class="spec-val">When it is ready</span>
+              </div>
             </div>
           </div>
         </div>
-      </aside>
-    </section>
-
-    <section id="position" class="band" aria-labelledby="position-title">
-      <div class="section-head">
-        <h2 id="position-title">A quiet public surface for serious work.</h2>
-        <p>Toly is not presenting a finished catalogue. This site exists to say what is true now: we are shaping the company, testing ideas privately, and keeping the public record accurate while the work matures.</p>
-      </div>
-
-      <p class="wide-copy">The near-term focus is discipline: clear decisions, small proofs, useful constraints, and a product standard that does not depend on hype. When a Toly project becomes public, it should arrive with a clear purpose, a plain explanation, and realistic expectations.</p>
-    </section>
-
-    <section id="principles" class="band" aria-labelledby="principles-title">
-      <div class="section-head">
-        <h2 id="principles-title">What guides the work.</h2>
-        <p>These are operating principles, not claims of achievement. They are here so the public tone stays aligned with how the company is being formed.</p>
-      </div>
-
-      <div class="cards">
-        <article class="card">
-          <h3>Useful before impressive</h3>
-          <p>We are interested in tools and experiences that solve real problems or create clear value, not surfaces built only to look busy.</p>
-        </article>
-
-        <article class="card">
-          <h3>Honest by default</h3>
-          <p>If something is experimental, private, incomplete, or not yet available, we will say so plainly.</p>
-        </article>
-
-        <article class="card">
-          <h3>Built to be maintained</h3>
-          <p>We want releases that can be supported responsibly, documented clearly, and improved without confusing the people who rely on them.</p>
-        </article>
       </div>
     </section>
 
-    <section id="readiness" class="band" aria-labelledby="readiness-title">
-      <div class="section-head">
-        <h2 id="readiness-title">How public releases will appear.</h2>
-        <p>The website will stay modest until there is something concrete to share. That restraint is part of the trust we want to build.</p>
-      </div>
-
-      <div class="timeline">
-        <div class="step">
-          <strong>Now</strong>
-          <p>Company positioning, private prototypes, and internal publishing workflows are being shaped outside the public repository.</p>
-        </div>
-
-        <div class="step">
-          <strong>Next</strong>
-          <p>Public pages will be added only when a project has a clear audience, honest scope, and enough maturity to be evaluated seriously.</p>
-        </div>
-      </div>
-    </section>
-
+    <!-- ── NOTICE / CTA ─────────────────────────────────────── -->
     <section class="notice" aria-labelledby="notice-title">
-      <h2 id="notice-title">No product claims yet.</h2>
-      <p>Toly is in preparation. This page is the public record for now: current, restrained, and intentionally simple. Future updates will be added when there is real work ready for public attention.</p>
+      <div class="wrap notice-inner">
+        <div class="reveal">
+          <p class="section-label">Status</p>
+          <h2 id="notice-title">The work<br>is the proof.</h2>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <p>
+            No launch date. No pre-orders. No hype. When MusicSimulator is ready,
+            it will speak for itself. Until then, this page stays honest —
+            a live record of a studio that chose to build first and announce later.
+          </p>
+          <a class="btn btn-ghost" href="#products">See the build</a>
+        </div>
+      </div>
     </section>
   </main>
 
+  <!-- ── FOOTER ──────────────────────────────────────────────── -->
   <footer>
-    <div class="wrap footer-row">
-      <span>&copy; 2026 Toly.</span>
-      <span>Building quietly, publishing carefully.</span>
+    <div class="wrap">
+      <div class="footer-top">
+        <div>
+          <a class="footer-brand" href="#top" aria-label="Toly home">
+            <span class="mark" aria-hidden="true">T</span>
+            <span>Toly</span>
+          </a>
+          <p class="footer-tagline">
+            A technology studio building deliberate software.
+            Building quietly. Publishing carefully.
+          </p>
+          <div class="footer-live">MusicSimulator in dev</div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Studio</h4>
+          <ul>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#studio">How we operate</a></li>
+            <li><a href="#products">Products</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pipeline</h4>
+          <ul>
+            <li><a href="#products">MusicSimulator</a></li>
+            <li><span class="dim">Arydes — On hold</span></li>
+            <li><span class="dim">Project TBA</span></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://github.com/em-eshy" target="_blank" rel="noopener">GitHub</a></li>
+            <li><span class="dim">Press kit — soon</span></li>
+            <li><span class="dim">Contact — soon</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Toly. All rights reserved.</span>
+        <span class="footer-lineage">Toly Holdings &rarr; Toly &rarr; Axerith Studios</span>
+      </div>
     </div>
   </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => obs.observe(el));
+
+    document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), 120 + i * 80);
+    });
+
+    const progObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelector('.progress-fill')?.classList.add('animated');
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.product-full').forEach(el => progObs.observe(el));
+
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      header.style.background = window.scrollY > 60
+        ? 'rgba(8,12,11,0.97)'
+        : 'rgba(8,12,11,0.88)';
+    }, { passive: true });
+  </script>
 </body>
 </html>
