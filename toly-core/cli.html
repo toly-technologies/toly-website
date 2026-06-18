@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Private CLI publishing interface for Toly.">
+  <title>CLI Console | Toly</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="cli">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html"><span class="brand-mark">T</span><span class="brand-copy"><span class="brand-name">Toly</span><span class="brand-line">Private prototype</span></span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <nav class="site-menu" id="site-menu" aria-label="Primary navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="tools.html">Tools</a>
+        <a class="nav-link" href="games.html">Games</a>
+        <a class="nav-link" href="studio.html">Axerith</a>
+        <a class="nav-link" href="news.html">News</a>
+        <a class="nav-link" href="admin.html">Admin</a>
+        <a class="nav-link active" href="cli.html">CLI</a>
+        <button class="theme-toggle" type="button">Mode</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container split">
+        <div class="reveal">
+          <p class="eyebrow">CLI console</p>
+          <h1>A private control room for publishing updates.</h1>
+          <p class="lead">This page gives the publishing CLI its own UI. Run either backend locally, choose its endpoint, then publish a company update through the API instead of editing JSON by hand.</p>
+          <div class="actions">
+            <a class="button primary" href="#console">Open console</a>
+            <a class="button ghost" href="news.html">View news feed</a>
+          </div>
+        </div>
+        <aside class="panel reveal">
+          <p class="eyebrow">Backend options</p>
+          <div class="status-panel">
+            <div class="status-row"><strong>Py</strong><p>Standard-library API on <code>http://127.0.0.1:8787</code>.</p></div>
+            <div class="status-row"><strong>Rs</strong><p>No-dependency Rust API on <code>http://127.0.0.1:8788</code>.</p></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="console">
+      <div class="container editor-layout">
+        <form class="editor-card reveal" id="cli-form">
+          <p class="eyebrow">API publish</p>
+          <label>Backend
+            <select id="cli-endpoint">
+              <option value="http://127.0.0.1:8787/api/posts">Python backend :8787</option>
+              <option value="http://127.0.0.1:8788/api/posts">Rust backend :8788</option>
+            </select>
+          </label>
+          <label>Title <input name="title" required placeholder="A clear update title"></label>
+          <label>Date <input name="date" type="date" required></label>
+          <label>Category
+            <select name="category">
+              <option value="company">Company</option>
+              <option value="tools">Tools</option>
+              <option value="games">Games</option>
+              <option value="studio">Studio</option>
+            </select>
+          </label>
+          <label>Summary <textarea name="summary" required placeholder="Short public summary."></textarea></label>
+          <label>Body <textarea name="body" placeholder="Optional longer update."></textarea></label>
+          <div class="editor-actions">
+            <button class="button primary" type="submit">Send to backend</button>
+            <button class="button ghost" type="button" id="cli-load">Load posts</button>
+          </div>
+          <p class="editor-status" id="cli-status" aria-live="polite">Start a backend, then send an update.</p>
+        </form>
+
+        <aside class="preview-card reveal">
+          <p class="eyebrow">Response</p>
+          <pre id="cli-output"><code>Waiting for backend activity.</code></pre>
+          <p class="editor-status">Successful API publishes write to <code>private/data/news.json</code>.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section band">
+      <div class="container split">
+        <div class="reveal">
+          <p class="eyebrow">Run commands</p>
+          <h2>Choose one backend at a time.</h2>
+          <p class="section-copy">These services are intentionally small. They are private scaffolding for the publishing workflow, not production authentication or hosting.</p>
+        </div>
+        <div class="notice reveal">
+          <pre><code>python backend/python/toly_cli_server.py
+
+cd backend/rust
+cargo run</code></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-layout">
+      <p class="footer-note">The CLI console is private. Public visitors should only see approved company news.</p>
+      <div class="footer-links"><a href="admin.html">Admin</a><a href="news.html">News</a><a href="index.html">Home</a></div>
+    </div>
+  </footer>
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/cli.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Private prototype of the future Toly website structure.">
+  <title>Toly Private Prototype</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html"><span class="brand-mark">T</span><span class="brand-copy"><span class="brand-name">Toly</span><span class="brand-line">Private prototype</span></span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <nav class="site-menu" id="site-menu" aria-label="Primary navigation">
+        <a class="nav-link active" href="index.html">Home</a>
+        <a class="nav-link" href="tools.html">Tools</a>
+        <a class="nav-link" href="games.html">Games</a>
+        <a class="nav-link" href="studio.html">Axerith</a>
+        <a class="nav-link" href="news.html">News</a>
+        <a class="nav-link" href="admin.html">Admin</a>
+        <a class="nav-link" href="cli.html">CLI</a>
+        <button class="theme-toggle" type="button">Mode</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <canvas class="scene-canvas" data-canvas-scene aria-hidden="true"></canvas>
+      <div class="container hero-layout">
+        <div class="reveal">
+          <p class="eyebrow">Future public structure</p>
+          <h1>Toly becomes <span data-rotating-text>a place for future tools</span>.</h1>
+          <p class="lead">This private prototype turns the site into a living skeleton: separate spaces for tools, games, Axerith Studios, and company news, without claiming products before they exist.</p>
+          <div class="hero-strip" aria-label="Private site capabilities">
+            <div><strong>5</strong><span>Connected pages</span></div>
+            <div><strong>2</strong><span>Backend options</span></div>
+            <div><strong>0</strong><span>Fake products</span></div>
+          </div>
+          <div class="actions">
+            <a class="button primary" href="tools.html">Explore tools space</a>
+            <a class="button ghost" href="cli.html">Open CLI console</a>
+          </div>
+        </div>
+
+        <aside class="command-hub reveal" aria-label="Private site command hub">
+          <div class="hub-top">
+            <span class="tiny-label">Command hub</span>
+            <span data-live-clock>Loading</span>
+          </div>
+          <div class="hub-orbit" aria-hidden="true">
+            <span>Tools</span>
+            <span>Games</span>
+            <span>News</span>
+            <span>CLI</span>
+          </div>
+          <div class="status-panel">
+            <div class="status-row"><strong>01</strong><p>Pages are separated so future ideas do not have to be squeezed into one landing page.</p></div>
+            <div class="status-row"><strong>02</strong><p>JavaScript adds interaction, live previews, theme control, news rendering, and publishing helpers.</p></div>
+            <div class="status-row"><strong>03</strong><p>The site stays open-ended until real work is ready to describe.</p></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section band">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Choose a door</p>
+          <h2>Each idea now has room to breathe.</h2>
+          <p class="section-copy">The public experience can grow one page at a time. Tools, games, studio identity, and company news each have their own surface, navigation, and interaction model.</p>
+        </div>
+        <div class="lively-grid">
+          <a class="card grid-feature reveal" href="tools.html"><span class="card-index">Tools</span><h3>Future utility space</h3><p>For product skeletons, utility concepts, and focused workflow pages when they become real.</p></a>
+          <a class="card reveal" href="games.html"><span class="card-index">Games</span><h3>Future play space</h3><p>For interactive worlds, rule systems, and playable ideas once there is something concrete.</p></a>
+          <a class="card reveal" href="studio.html"><span class="card-index">Axerith</span><h3>General studio identity</h3><p>A broad description of the creative and technical workshop behind Toly.</p></a>
+          <a class="card reveal" href="news.html"><span class="card-index">News</span><h3>Weekly company notes</h3><p>A public-readable feed that can stay empty until there is a meaningful update.</p></a>
+          <a class="card reveal" href="admin.html"><span class="card-index">Admin</span><h3>Writing workspace</h3><p>A private editor for drafting, previewing, and exporting company news data.</p></a>
+          <a class="card reveal" href="cli.html"><span class="card-index">CLI</span><h3>Publishing console</h3><p>A UI for the Python and Rust backend services that update the news data file.</p></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="reveal">
+          <p class="eyebrow">Interactive framing</p>
+          <h2>Visitors get motion without being oversold.</h2>
+          <p class="section-copy">Use the controls to see how the site can explain future sections while staying honest about the current stage.</p>
+        </div>
+        <div class="panel reveal">
+          <div class="stack-tabs" data-choice-group="signal">
+            <button class="choice active" type="button" data-choice="tools">Tools</button>
+            <button class="choice" type="button" data-choice="games">Games</button>
+            <button class="choice" type="button" data-choice="news">News</button>
+          </div>
+          <div class="interactive-output" data-choice-output="signal">Tools will get their own pages when an idea is real enough to explain clearly.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-layout">
+      <p class="footer-note">Private prototype only. Public GitHub tracking remains limited to the public landing page and README.</p>
+      <div class="footer-links"><a href="tools.html">Tools</a><a href="games.html">Games</a><a href="studio.html">Axerith</a><a href="news.html">News</a></div>
+    </div>
+  </footer>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
