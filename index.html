@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Toly is a small technology studio preparing thoughtful tools and durable digital products.">
+  <title>Toly</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1f2933;
+      --muted: #52606d;
+      --line: #d9e2ec;
+      --paper: #fbfcfd;
+      --panel: #ffffff;
+      --accent: #0f766e;
+      --accent-dark: #134e4a;
+      --warm: #b45309;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    a {
+      color: var(--accent-dark);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    .page {
+      width: min(1040px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .status::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    main {
+      padding: 72px 0 48px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+      gap: 56px;
+      align-items: start;
+      padding-bottom: 64px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(2.5rem, 7vw, 5.75rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .intro {
+      max-width: 680px;
+      margin: 28px 0 0;
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: var(--muted);
+    }
+
+    .note {
+      padding: 22px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .note strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--warm);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .note p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+      padding: 56px 0 24px;
+    }
+
+    section h2 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
+
+    section p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .closing {
+      margin-top: 48px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 32px 0 44px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 760px) {
+      nav,
+      .hero {
+        display: block;
+      }
+
+      .status {
+        margin-top: 12px;
+      }
+
+      main {
+        padding-top: 48px;
+      }
+
+      .note {
+        margin-top: 36px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="page" aria-label="Primary">
+      <div class="brand">Toly</div>
+      <div class="status">Building quietly, publishing carefully</div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="hero">
+      <div>
+        <h1>Useful technology, prepared with care.</h1>
+        <p class="intro">Toly is an early-stage technology studio. We are not selling products yet; we are laying the groundwork for tools, systems, and small digital experiences that should feel dependable from the first public release.</p>
+      </div>
+
+      <aside class="note" aria-label="Current status">
+        <strong>Current status</strong>
+        <p>The public site is intentionally simple while the work matures. When something is ready to use, it will be introduced clearly, with honest scope and support expectations.</p>
+      </aside>
+    </div>
+
+    <div class="grid" aria-label="Company principles">
+      <section>
+        <h2>Measured progress</h2>
+        <p>We prefer steady work, small proofs, and clear decisions over loud promises.</p>
+      </section>
+
+      <section>
+        <h2>Practical ambition</h2>
+        <p>Our interests include productivity tools, games, creative software, and publishing systems, but each project has to earn its place.</p>
+      </section>
+
+      <section>
+        <h2>Public trust</h2>
+        <p>We will keep the public surface calm, readable, and accurate as the company develops.</p>
+      </section>
+    </div>
+
+    <p class="closing">Toly is currently in preparation. For now, this page serves as the public record: quiet, current, and deliberately modest.</p>
+  </main>
+
+  <footer>
+    <div class="page">© 2026 Toly.</div>
+  </footer>
+</body>
+</html>
