@@ -3,48 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Toly is a small technology studio preparing thoughtful tools and durable digital products.">
-  <title>Toly</title>
+  <meta name="description" content="Toly is an early-stage technology studio preparing careful digital tools, systems, and experiences.">
+  <meta name="theme-color" content="#f6f7f2">
+  <meta property="og:title" content="Toly">
+  <meta property="og:description" content="An early-stage technology studio building quietly and publishing carefully.">
+  <meta property="og:type" content="website">
+  <title>Toly - Careful Technology Studio</title>
   <style>
     :root {
       color-scheme: light;
-      --ink: #1f2933;
-      --muted: #52606d;
-      --line: #d9e2ec;
-      --paper: #fbfcfd;
-      --panel: #ffffff;
-      --accent: #0f766e;
-      --accent-dark: #134e4a;
-      --warm: #b45309;
+      --paper: #f6f7f2;
+      --surface: #ffffff;
+      --ink: #18232f;
+      --muted: #5f6d7a;
+      --soft: #e4e7dc;
+      --line: #cdd4c4;
+      --green: #0f6b5b;
+      --green-strong: #0a433b;
+      --clay: #9a5b32;
+      --blue: #245b73;
+      --shadow: 0 24px 70px rgba(24, 35, 47, 0.10);
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
+      line-height: 1.55;
       color: var(--ink);
-      background: var(--paper);
+      background:
+        linear-gradient(90deg, rgba(205, 212, 196, 0.34) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(205, 212, 196, 0.28) 1px, transparent 1px),
+        var(--paper);
+      background-size: 64px 64px;
     }
 
     a {
-      color: var(--accent-dark);
+      color: inherit;
       text-decoration-thickness: 0.08em;
-      text-underline-offset: 0.18em;
+      text-underline-offset: 0.2em;
     }
 
-    .page {
-      width: min(1040px, calc(100% - 32px));
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(15, 107, 91, 0.35);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 10;
+      padding: 10px 14px;
+      color: var(--surface);
+      background: var(--green-strong);
+      transform: translateY(-160%);
+      transition: transform 180ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
     }
 
     header {
-      padding: 28px 0;
-      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      border-bottom: 1px solid rgba(205, 212, 196, 0.86);
+      background: rgba(246, 247, 242, 0.92);
+      backdrop-filter: blur(14px);
     }
 
     nav {
@@ -52,177 +93,512 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
+      min-height: 76px;
     }
 
     .brand {
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: 0;
-    }
-
-    .status {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      color: var(--surface);
+      background: var(--green-strong);
+      border-radius: 50%;
+      font-size: 0.95rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px 22px;
       color: var(--muted);
       font-size: 0.95rem;
     }
 
-    .status::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      background: var(--accent);
+    .nav-links a {
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--green-strong);
     }
 
     main {
-      padding: 72px 0 48px;
+      padding: 72px 0 64px;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
-      gap: 56px;
-      align-items: start;
-      padding-bottom: 64px;
-      border-bottom: 1px solid var(--line);
+      grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+      gap: 64px;
+      align-items: center;
+      min-height: calc(100vh - 172px);
+      padding-bottom: 56px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 24px;
+      color: var(--green-strong);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 2px;
+      background: var(--green);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
     }
 
     h1 {
-      margin: 0;
-      max-width: 760px;
-      font-size: clamp(2.5rem, 7vw, 5.75rem);
-      line-height: 0.98;
+      max-width: 780px;
+      margin-bottom: 28px;
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      line-height: 0.95;
       letter-spacing: 0;
     }
 
-    .intro {
-      max-width: 680px;
-      margin: 28px 0 0;
-      font-size: clamp(1.1rem, 2vw, 1.35rem);
+    .lead {
+      max-width: 690px;
+      margin-bottom: 36px;
+      color: var(--muted);
+      font-size: clamp(1.12rem, 2vw, 1.32rem);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid var(--green-strong);
+      color: var(--surface);
+      background: var(--green-strong);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      color: var(--green-strong);
+      background: transparent;
+    }
+
+    .signal {
+      position: relative;
+      min-height: 450px;
+      padding: 26px;
+      overflow: hidden;
+      color: var(--surface);
+      background:
+        linear-gradient(135deg, rgba(10, 67, 59, 0.98), rgba(36, 91, 115, 0.95)),
+        var(--green-strong);
+      box-shadow: var(--shadow);
+    }
+
+    .signal::before {
+      content: "";
+      position: absolute;
+      inset: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .signal-grid {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.10) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(180deg, #000, transparent 85%);
+    }
+
+    .signal-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      min-height: 398px;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .signal-kicker {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .signal-title {
+      max-width: 350px;
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .signal-bottom {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .metric {
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.84rem;
+    }
+
+    .band {
+      padding: 64px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.45fr) minmax(0, 0.55fr);
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 38px;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+
+    .section-head p,
+    .wide-copy {
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 210px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 1.02rem;
+    }
+
+    .card p {
+      margin-bottom: 0;
       color: var(--muted);
     }
 
-    .note {
-      padding: 22px;
-      border: 1px solid var(--line);
-      background: var(--panel);
+    .timeline {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
     }
 
-    .note strong {
+    .step {
+      padding: 24px;
+      border-left: 4px solid var(--green);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .step strong {
       display: block;
-      margin-bottom: 10px;
-      color: var(--warm);
+      margin-bottom: 8px;
+      color: var(--green-strong);
       font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
 
-    .note p {
-      margin: 0;
+    .step p {
+      margin-bottom: 0;
       color: var(--muted);
     }
 
-    .grid {
+    .notice {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 28px;
-      padding: 56px 0 24px;
+      grid-template-columns: minmax(220px, 0.38fr) minmax(0, 0.62fr);
+      gap: 36px;
+      padding: 34px;
+      color: var(--surface);
+      background: var(--ink);
     }
 
-    section h2 {
-      margin: 0 0 12px;
-      font-size: 1rem;
-      letter-spacing: 0;
+    .notice h2 {
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
     }
 
-    section p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .closing {
-      margin-top: 48px;
-      padding-top: 28px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
+    .notice p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.78);
     }
 
     footer {
-      padding: 32px 0 44px;
+      padding: 34px 0 46px;
+      border-top: 1px solid var(--line);
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.94rem;
     }
 
-    @media (max-width: 760px) {
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    @media (max-width: 860px) {
+      header {
+        position: static;
+      }
+
       nav,
-      .hero {
+      .section-head,
+      .notice {
         display: block;
       }
 
-      .status {
-        margin-top: 12px;
+      .nav-links {
+        justify-content: flex-start;
+        margin-top: 14px;
       }
 
       main {
         padding-top: 48px;
       }
 
-      .note {
-        margin-top: 36px;
+      .hero {
+        display: block;
+        min-height: auto;
       }
 
-      .grid {
+      .signal {
+        min-height: 380px;
+        margin-top: 42px;
+      }
+
+      .signal-content {
+        min-height: 328px;
+      }
+
+      .cards,
+      .timeline {
         grid-template-columns: 1fr;
-        gap: 30px;
+      }
+
+      .section-head p,
+      .notice p {
+        margin-top: 16px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap {
+        width: min(100% - 24px, 1120px);
+      }
+
+      nav {
+        min-height: 92px;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 17vw, 4.6rem);
+      }
+
+      .actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .button {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .signal,
+      .notice {
+        padding: 22px;
+      }
+
+      .signal::before {
+        inset: 18px;
+      }
+
+      .signal-bottom {
+        grid-template-columns: 1fr;
+      }
+
+      .band {
+        padding: 52px 0;
       }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header>
-    <nav class="page" aria-label="Primary">
-      <div class="brand">Toly</div>
-      <div class="status">Building quietly, publishing carefully</div>
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Toly home">
+        <span class="mark" aria-hidden="true">T</span>
+        <span>Toly</span>
+      </a>
+
+      <div class="nav-links" aria-label="Page sections">
+        <a href="#position">Position</a>
+        <a href="#principles">Principles</a>
+        <a href="#readiness">Readiness</a>
+      </div>
     </nav>
   </header>
 
-  <main class="page">
-    <div class="hero">
+  <main id="main" class="wrap">
+    <section id="top" class="hero" aria-labelledby="hero-title">
       <div>
-        <h1>Useful technology, prepared with care.</h1>
-        <p class="intro">Toly is an early-stage technology studio. We are not selling products yet; we are laying the groundwork for tools, systems, and small digital experiences that should feel dependable from the first public release.</p>
+        <p class="eyebrow">Early-stage technology studio</p>
+        <h1 id="hero-title">Toly is being built with patience.</h1>
+        <p class="lead">We are preparing practical digital tools, systems, and small experiences before asking for attention. There are no public products yet, and that is intentional: the work should be useful before it becomes loud.</p>
+
+        <div class="actions" aria-label="Primary actions">
+          <a class="button" href="#position">Read our position</a>
+          <a class="button secondary" href="#readiness">Current status</a>
+        </div>
       </div>
 
-      <aside class="note" aria-label="Current status">
-        <strong>Current status</strong>
-        <p>The public site is intentionally simple while the work matures. When something is ready to use, it will be introduced clearly, with honest scope and support expectations.</p>
+      <aside class="signal" aria-label="Toly working posture">
+        <div class="signal-grid" aria-hidden="true"></div>
+        <div class="signal-content">
+          <p class="signal-kicker">Public signal</p>
+          <p class="signal-title">Calm progress, honest scope, durable releases.</p>
+          <div class="signal-bottom" aria-label="Company commitments">
+            <div class="metric">
+              <strong>01</strong>
+              <span>Prepare before launch</span>
+            </div>
+            <div class="metric">
+              <strong>02</strong>
+              <span>Publish with care</span>
+            </div>
+            <div class="metric">
+              <strong>03</strong>
+              <span>Support what ships</span>
+            </div>
+          </div>
+        </div>
       </aside>
-    </div>
+    </section>
 
-    <div class="grid" aria-label="Company principles">
-      <section>
-        <h2>Measured progress</h2>
-        <p>We prefer steady work, small proofs, and clear decisions over loud promises.</p>
-      </section>
+    <section id="position" class="band" aria-labelledby="position-title">
+      <div class="section-head">
+        <h2 id="position-title">A quiet public surface for serious work.</h2>
+        <p>Toly is not presenting a finished catalogue. This site exists to say what is true now: we are shaping the company, testing ideas privately, and keeping the public record accurate while the work matures.</p>
+      </div>
 
-      <section>
-        <h2>Practical ambition</h2>
-        <p>Our interests include productivity tools, games, creative software, and publishing systems, but each project has to earn its place.</p>
-      </section>
+      <p class="wide-copy">The near-term focus is discipline: clear decisions, small proofs, useful constraints, and a product standard that does not depend on hype. When a Toly project becomes public, it should arrive with a clear purpose, a plain explanation, and realistic expectations.</p>
+    </section>
 
-      <section>
-        <h2>Public trust</h2>
-        <p>We will keep the public surface calm, readable, and accurate as the company develops.</p>
-      </section>
-    </div>
+    <section id="principles" class="band" aria-labelledby="principles-title">
+      <div class="section-head">
+        <h2 id="principles-title">What guides the work.</h2>
+        <p>These are operating principles, not claims of achievement. They are here so the public tone stays aligned with how the company is being formed.</p>
+      </div>
 
-    <p class="closing">Toly is currently in preparation. For now, this page serves as the public record: quiet, current, and deliberately modest.</p>
+      <div class="cards">
+        <article class="card">
+          <h3>Useful before impressive</h3>
+          <p>We are interested in tools and experiences that solve real problems or create clear value, not surfaces built only to look busy.</p>
+        </article>
+
+        <article class="card">
+          <h3>Honest by default</h3>
+          <p>If something is experimental, private, incomplete, or not yet available, we will say so plainly.</p>
+        </article>
+
+        <article class="card">
+          <h3>Built to be maintained</h3>
+          <p>We want releases that can be supported responsibly, documented clearly, and improved without confusing the people who rely on them.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="readiness" class="band" aria-labelledby="readiness-title">
+      <div class="section-head">
+        <h2 id="readiness-title">How public releases will appear.</h2>
+        <p>The website will stay modest until there is something concrete to share. That restraint is part of the trust we want to build.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="step">
+          <strong>Now</strong>
+          <p>Company positioning, private prototypes, and internal publishing workflows are being shaped outside the public repository.</p>
+        </div>
+
+        <div class="step">
+          <strong>Next</strong>
+          <p>Public pages will be added only when a project has a clear audience, honest scope, and enough maturity to be evaluated seriously.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="notice" aria-labelledby="notice-title">
+      <h2 id="notice-title">No product claims yet.</h2>
+      <p>Toly is in preparation. This page is the public record for now: current, restrained, and intentionally simple. Future updates will be added when there is real work ready for public attention.</p>
+    </section>
   </main>
 
   <footer>
-    <div class="page">© 2026 Toly.</div>
+    <div class="wrap footer-row">
+      <span>&copy; 2026 Toly.</span>
+      <span>Building quietly, publishing carefully.</span>
+    </div>
   </footer>
 </body>
 </html>
