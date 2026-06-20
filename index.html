@@ -103,6 +103,11 @@
       transition: opacity 0.2s;
     }
     .brand:hover { opacity: 0.8; }
+    .brand-logo {
+      width: 48px;
+      height: auto;
+      display: block;
+    }
     .mark {
       display: grid; place-items: center;
       width: 38px; height: 38px;
@@ -740,8 +745,7 @@
   <header>
     <nav class="wrap" aria-label="Primary navigation" style="display: flex; align-items: center; justify-content: space-between;">
       <a class="brand" href="#top" aria-label="Toly home">
-        <span class="mark" aria-hidden="true">T</span>
-        <span>Toly</span>
+        <img src="../Toly/assets/toly-logo.png" alt="Toly" class="brand-logo">
       </a>
 
       <div class="nav-center" aria-label="Page sections" style="display: flex; align-items: center; gap: 32px; flex: 1; justify-content: center;">
