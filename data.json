@@ -1,0 +1,22 @@
+{
+  "announcement": "No development",
+
+  "pipeline": [],
+
+  "counters": {
+    "activeProducts": 0,
+    "publicReleases": 0
+  },
+
+  "journeyStage": "idea",
+
+  "productsSub": "We're currently in the ideation phase.",
+
+  "product": null,
+
+  "lab": {
+    "status": "Currently empty",
+    "title": "Testing Ground",
+    "description": "This is where we test out new ideas. It will help us achieve our goals for coming up with better products and services."
+  }
+}
